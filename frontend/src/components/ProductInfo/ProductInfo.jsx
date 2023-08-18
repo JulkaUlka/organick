@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
 import {
   Backdrop,
   Modal,
@@ -16,10 +17,12 @@ import { Container, titleColor } from "../../App.styled";
 import { ButtonStyled } from "../Button/Button.styled";
 import { Rating } from "../Raiting/Raiting";
 import { Quantity } from "../Quantity /Quantity";
+import { Store } from "../../helpers/store";
 
-export const ProductInfo = ({ onOpenModal, isShown, selectedProduct }) => {
+export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
   const [activeButton, setActiveButton] = useState("description");
-
+  const [productQuantity, setProductQuantity] = useState(1);
+  
   const activityHandler = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -39,12 +42,28 @@ export const ProductInfo = ({ onOpenModal, isShown, selectedProduct }) => {
   const activeText =
     activeButton === "description" ? description : additionalInfo;
 
-    
-    const handleAddToCart = () => {
-     
-    };
-  
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart } = state;
 
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    setProductQuantity(newQuantity);
+  };
+
+  const handleAddToCart = () => {
+    const existItem = cart.cartItems.find(
+      (x) => x.path === selectedProduct.path
+    );
+    const quantity = existItem
+      ? existItem.quantity + productQuantity
+      : productQuantity;
+
+    ctxDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...selectedProduct, quantity },
+    });
+    onOpenModal();
+  };
 
   return (
     <>
@@ -60,11 +79,17 @@ export const ProductInfo = ({ onOpenModal, isShown, selectedProduct }) => {
                 <Title>{name}</Title>
                 <Rating rating={rating} />
                 <div>
-                  <Discount>${price}</Discount>
+                  {discount ? <Discount>${price}</Discount> : null}
                   <Price>${price - discount}</Price>
                 </div>
                 <Text aligning="start">{info}</Text>
-                <Quantity onAction={handleAddToCart} text="Add To Cart" showArrow={true}/>
+                <Quantity
+                  onAction={handleAddToCart}
+                  inputValue={productQuantity}
+                  handleQuantityChange={handleQuantityChange}
+                  text="Add To Cart"
+                  showArrow={true}
+                />
               </TextWrap>
             </Block>
             <Block distance="1.25rem">

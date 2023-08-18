@@ -183,8 +183,8 @@ const data = {
         "A refrigerator is the best place to store products if you do not plan to eat them all right away. Package them in an airtight container (Ziplock, Tupperware, jar with tight lid) and they will stay fresh. An airtight package helps prevent condensation.",
     },
     {
-      name: "Cabage",
-      path: "cabage",
+      name: "Marrow",
+      path: "marrow",
       category: "Vegetable",
       image: "/images/products/p14.jpg",
       price: 12,
@@ -211,8 +211,8 @@ const data = {
         "A refrigerator is the best place to store products if you do not plan to eat them all right away. Package them in an airtight container (Ziplock, Tupperware, jar with tight lid) and they will stay fresh. An airtight package helps prevent condensation.",
     },
     {
-      name: "Marrow",
-      path: "marrow",
+      name: "Cabage",
+      path: "cabage",
       category: "Vegetable",
       image: "/images/products/p16.jpg",
       price: 17,

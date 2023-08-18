@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import { Link } from "react-router-dom";
 import { ProductInfo } from "../ProductInfo/ProductInfo";
 import { Rating } from "../Raiting/Raiting";
@@ -15,6 +15,20 @@ import {
   ImageWrap,
 } from "./ProductList.styled";
 
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS':
+      return { ...state, product: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 export function ProductList({
   category,
   name,
@@ -25,17 +39,28 @@ export function ProductList({
   rating,
 }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+
 
   const openModalHandler = () => {
     setIsModalOpened(true);
   };
 
+  const [{ loading, error, product }, dispatch] = useReducer(reducer, {
+    product: [],
+    loading: true,
+    error: '',
+  });
+
   const selectProductHandler = async () => {
-    const { data } = await axios.get(`/api/products`);
-    const foundProduct = data.find((p) => p.path === path);
-    setSelectedProduct(foundProduct);
-    openModalHandler();
+  openModalHandler();
+    dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const { data } = await axios.get(`/api/products`);
+        const foundProduct = data.find((p) => p.path === path);
+        dispatch({ type: 'FETCH_SUCCESS', payload: foundProduct });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
   };
 
   return (
@@ -62,7 +87,7 @@ export function ProductList({
         <ProductInfo
           onOpenModal={() => setIsModalOpened(false)}
           isShown={isModalOpened}
-          selectedProduct={selectedProduct}
+          selectedProduct={product}
         />
       )}
     </>

@@ -12,8 +12,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<LazyHome />} />
+            <Route exact path='/cart' element={<CartPage />} />
           </Route>
-          <Route exact path='/cart' element={<CartPage />} />
+       
         </Routes>
       </Suspense>
     </div>

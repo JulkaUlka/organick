@@ -28,6 +28,7 @@ export const Quntity = styled.p`
   @media (max-width: 400px) {
     font-size: 12px;
   }
+ 
 `;
 export const Wrapper = styled.div`
   padding: 13px;
