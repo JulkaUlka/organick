@@ -60,7 +60,7 @@ function Home() {
         <Title>Our Products:</Title>
         <ProductListStyled>
           {sortedProducts.slice(0, itemsToShow).map((product) => (
-            <ProductList {...product} key={product.path} />
+            <ProductList {...product} key={product._id} />
           ))}
         </ProductListStyled>
         {!showAll ? (

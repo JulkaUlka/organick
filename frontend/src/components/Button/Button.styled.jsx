@@ -34,7 +34,7 @@ export const ButtonArrowStyled = styled(ButtonStyled)`
   justify-content: center;
   gap: 5px;
   padding: 1.44vw;
-  &:hover,
+ &:hover,
   &:focus {
     background-color: ${btnColor};
     color: ${titleColor};

@@ -15,14 +15,13 @@ import {
   ImageWrap,
 } from "./ProductList.styled";
 
-
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_REQUEST':
+    case "FETCH_REQUEST":
       return { ...state, loading: true };
-    case 'FETCH_SUCCESS':
+    case "FETCH_SUCCESS":
       return { ...state, product: action.payload, loading: false };
-    case 'FETCH_FAIL':
+    case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
     default:
       return state;
@@ -37,10 +36,12 @@ export function ProductList({
   price,
   discount,
   rating,
+  _id,
 }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
-
-
+  const closeModal = () => {
+    setIsModalOpened(false);
+  };
   const openModalHandler = () => {
     setIsModalOpened(true);
   };
@@ -48,19 +49,19 @@ export function ProductList({
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
-    error: '',
+    error: "",
   });
 
   const selectProductHandler = async () => {
-  openModalHandler();
-    dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const { data } = await axios.get(`/api/products`);
-        const foundProduct = data.find((p) => p.path === path);
-        dispatch({ type: 'FETCH_SUCCESS', payload: foundProduct });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
-      }
+    openModalHandler();
+    dispatch({ type: "FETCH_REQUEST" });
+    try {
+      const { data } = await axios.get(`/api/products`);
+      const foundProduct = data.find((p) => p._id === _id);
+      dispatch({ type: "FETCH_SUCCESS", payload: foundProduct });
+    } catch (err) {
+      dispatch({ type: "FETCH_FAIL", payload: err.message });
+    }
   };
 
   return (
@@ -84,11 +85,7 @@ export function ProductList({
         </Link>
       </ProductItemStyled>
       {isModalOpened && (
-        <ProductInfo
-          onOpenModal={() => setIsModalOpened(false)}
-          isShown={isModalOpened}
-          selectedProduct={product}
-        />
+        <ProductInfo onOpenModal={closeModal} selectedProduct={product} />
       )}
     </>
   );

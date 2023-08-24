@@ -6,6 +6,13 @@ import { Arrow } from "../../components/Arrow/Arrow";
 import { OrderedForm } from "../../components/OrderedForm/OrderedForm";
 import { Container } from "../../App.styled";
 import { Store } from "../../helpers/store";
+import {
+  Discount,
+  Price,
+  ProductImg,
+} from "../../components/ProductList/ProductList.styled";
+import { Title } from "../../components/ProductInfo/Productinfo.styled";
+import { Cart, List, Item, ImageWrapper, Total } from "./CartPage.styled";
 
 function CartPage() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -29,17 +36,19 @@ function CartPage() {
   };
 
   return (
-    <>
+    <Cart>
       <Container>
-        <ul>
+        <List>
           {cartItems.map((item) => (
-            <li key={item.path}>
+            <Item key={item._id}>
+              <ImageWrapper>
+                <ProductImg src={item.image} alt={item.name} />
+              </ImageWrapper>
+              <Title>{item.name}</Title>
               <div>
-                <img src={item.image} alt={item.name} />
+                {item.discount ? <Discount>${item.price}</Discount> : null}
+                <Price>${item.price - item.discount}</Price>
               </div>
-              <p>{item.name}</p>
-              {item.discount ? <p>${item.price}</p> : null}
-              <p>${item.price - item.discount}</p>
               <Quantity
                 onAction={() => handleRemoveFromCart(item)}
                 inputValue={item.quantity}
@@ -49,29 +58,30 @@ function CartPage() {
                   handleQuantityChange(+e.target.value, item)
                 }
               />
-            </li>
+            </Item>
           ))}
-        </ul>
-        <p>
+        </List>
+        <Total>
           Total Cost{" "}
           {cartItems.reduce(
             (a, c) => a + (c.price - c.discount) * c.quantity,
             0
           )}
           $
-        </p>
-        <p>
+        </Total>
+        <Total>
           Discount {cartItems.reduce((a, c) => a + c.discount * c.quantity, 0)}$
-        </p>
-        {!isOrder && (
-          <ButtonArrowStyled onClick={toOrderHandler}>
+        </Total>
+        {isOrder ? (
+          <OrderedForm />
+        ) : (
+          <ButtonArrowStyled margins="0 auto" onClick={toOrderHandler}>
             To order
             <Arrow />
           </ButtonArrowStyled>
         )}
-        {isOrder && <OrderedForm />}
       </Container>
-    </>
+    </Cart>
   );
 }
 

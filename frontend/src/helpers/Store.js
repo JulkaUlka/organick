@@ -5,6 +5,7 @@ export const Store = createContext();
 const initialState = {
   cart: {
     cartItems: [],
+    shippingAddress:[],
   },
 };
 function reducer(state, action) {
@@ -26,6 +27,18 @@ function reducer(state, action) {
       );
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case "CART_REMOVE_ALL": {
+      const cartItems = [];
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+    case 'SAVE_SHIPPING_ADDRESS':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: action.payload,
+        },
+      };
     default:
       return state;
   }

@@ -34,5 +34,4 @@ export const BlockStyled = styled.div`
   align-items: center;
   gap: 10px;
   margin-bottom: 0;
-  margin-top: 20px;
-`;
+ `;

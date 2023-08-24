@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Header } from "./components/Header/Header";
-import CartPage from "./pages/CartPage/CartPage"
+import CartPage from "./pages/CartPage/CartPage";
+import SuccessPage from "./pages/SuccessPage/SuccessPage";
+
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
 
@@ -13,6 +15,7 @@ export const App = () => {
           <Route path="/" element={<Header />}>
             <Route index element={<LazyHome />} />
             <Route exact path='/cart' element={<CartPage />} />
+            <Route exact path='/success' element={<SuccessPage />} />
           </Route>
        
         </Routes>

@@ -22,7 +22,7 @@ import { Store } from "../../helpers/store";
 export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
   const [activeButton, setActiveButton] = useState("description");
   const [productQuantity, setProductQuantity] = useState(1);
-  
+
   const activityHandler = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -62,13 +62,17 @@ export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
       type: "CART_ADD_ITEM",
       payload: { ...selectedProduct, quantity },
     });
+
+    onOpenModal();
+  };
+  const closeModal = () => {
     onOpenModal();
   };
 
   return (
     <>
-      <Backdrop>
-        <Modal>
+      <Backdrop onClick={closeModal}>
+        <Modal onClick={(e) => e.stopPropagation()} className="modal">
           <Container>
             <Block distance="5.5vw">
               <ImageWrap>
@@ -117,7 +121,7 @@ export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
             <Text aligning="center" width="80%">
               {activeText}
             </Text>
-            <ModalButton onClick={onOpenModal}>X</ModalButton>
+            <ModalButton onClick={closeModal}>X</ModalButton>
           </Container>
         </Modal>
       </Backdrop>
