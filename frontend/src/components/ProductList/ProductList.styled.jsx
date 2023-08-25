@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { titleFont, titleColor, bgColor } from "../../App.styled";
+import { titleFont, titleColor, bgColor,whiteColor } from "../../App.styled";
 
 export const ProductImg = styled.img`
   mix-blend-mode: multiply;
@@ -31,7 +31,7 @@ export const Category = styled.p`
   padding: 0.3125rem 0.75rem 0.375rem 0.75rem;
   border-radius: 0.5rem;
   background: ${titleColor};
-  color: #fff;
+  color: ${whiteColor};
   text-align: center;
   font-size: 0.9375rem;
   font-weight: 600;

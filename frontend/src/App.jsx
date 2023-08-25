@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { Header } from "./components/Header/Header";
 import CartPage from "./pages/CartPage/CartPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
 
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
@@ -17,7 +18,7 @@ export const App = () => {
             <Route exact path='/cart' element={<CartPage />} />
             <Route exact path='/success' element={<SuccessPage />} />
           </Route>
-       
+          <Route path="/admin" element={<OrdersPage />}/>
         </Routes>
       </Suspense>
     </div>

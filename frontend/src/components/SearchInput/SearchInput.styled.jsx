@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { accentColor, titleColor, btnColor } from "../../App.styled";
+import { accentColor, titleColor, btnColor,whiteColor } from "../../App.styled";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -34,7 +34,7 @@ export const SearchBtn = styled.button`
   }
 `;
 export const SearchIcon = styled(FontAwesomeIcon)`
-  color: #fff;
+  color: ${whiteColor};
 `;
 export const Input = styled.input`
   padding: 6px 40px 6px 6px;

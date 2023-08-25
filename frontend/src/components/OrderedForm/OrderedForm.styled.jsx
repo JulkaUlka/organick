@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { titleFont, titleColor, accentColor } from "../../App.styled";
+import { titleFont, titleColor, accentColor, whiteColor } from "../../App.styled";
 
 
 export const Form = styled.form`
@@ -23,7 +23,7 @@ export const Input = styled.input`
   font-family: ${titleFont};
   font-weight: 400;
   font-size: 1.5rem;
-  background: #fff;
+  background: ${whiteColor};
   border: 1px solid ${accentColor};
   border-radius: 16px;
   padding: 1.4vw;
@@ -62,7 +62,7 @@ width: 100%;
   font-weight: 400;
   font-size: 1.5rem;
   line-height: normal;
-  background: #fff;
+  background: ${whiteColor};
   &::placeholder {
     color: #ababab;
     font-size: 1.125rem;

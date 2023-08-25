@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { titleColor, btnColor, titleFont } from "../../App.styled";
+import { titleColor, btnColor, titleFont, whiteColor } from "../../App.styled";
 
 export const LinkStyled = styled(Link)`
   display: flex;
@@ -16,7 +16,7 @@ export const LinkStyled = styled(Link)`
   flex: 1 0 auto;
 `;
 export const CartIcon = styled(FontAwesomeIcon)`
-  color: #fff;
+  color: ${whiteColor};
 `;
 export const Quntity = styled.p`
   font-family: ${titleFont};

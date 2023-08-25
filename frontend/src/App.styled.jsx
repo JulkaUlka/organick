@@ -9,6 +9,7 @@ export const titleColor = '#274C5B';
 export const bgColor = '#F9F8F8';
 export const bgColorSecondary = '#F1F8F4';
 export const btnColor = '#EFD372';
+export const whiteColor = '#FFF';
 
 export const Container = styled.div`
   margin-left: auto;

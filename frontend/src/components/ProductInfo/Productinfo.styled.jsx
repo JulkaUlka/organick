@@ -43,13 +43,13 @@ export const Modal = styled.div`
     padding: 2rem 0rem 2rem;
   }
 `;
-const Div = ({ distance, ...props }) => <div {...props}></div>;
+const Div = ({ distance,wrapping, ...props }) => <div {...props}></div>;
 export const Block = styled(Div)`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: ${(props) => props.wrapping || "wrap"};
   justify-content: center;
   align-items: center;
-  gap: ${(props) => props.distance};
+  gap: ${(props) => props.distance || "5px"};
   margin-bottom: 1.69vw;
 `;
 export const CategoryModal = styled(Category)`
@@ -80,7 +80,7 @@ export const TextWrap = styled.div`
     align-items: center;
   }
 `;
-export const Title = styled.h2`
+export const Title = styled.p`
   color: ${titleColor};
   font-family: ${titleFont};
   font-size: 2.5vw;

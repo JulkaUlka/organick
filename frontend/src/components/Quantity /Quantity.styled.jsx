@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { titleFont, titleColor, accentColor } from "../../App.styled";
+import { titleFont, titleColor, accentColor,whiteColor } from "../../App.styled";
 
 export const QuantityLabel = styled.p`
   color: ${titleColor};
@@ -14,7 +14,7 @@ export const QuantityLabel = styled.p`
 export const QuantityInput = styled.input`
   display: inline-block;
   padding: 1.4vw 2vw;
-  background: #fff;
+  background: ${whiteColor};
   border: 2px solid ${titleColor};
   border-radius: 16px;
   color: ${titleColor};

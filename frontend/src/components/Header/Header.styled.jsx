@@ -4,6 +4,7 @@ import {
   titleFont,
   titleColor,
   accentColor,
+  whiteColor
 } from "../../App.styled";
 
 export const HeaderContainer = styled(Container)`
@@ -72,7 +73,7 @@ export const NavigateList = styled.ul`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: #fff;
+    background-color: ${whiteColor};
     position: fixed;
     top: 100px;
     left: 0;
