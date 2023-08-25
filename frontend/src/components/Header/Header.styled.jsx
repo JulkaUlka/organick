@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import {
-  Container,
   titleFont,
   titleColor,
   accentColor,
-  whiteColor
+  whiteColor,
 } from "../../App.styled";
 
-export const HeaderContainer = styled(Container)`
+export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -85,7 +84,10 @@ export const NavigateList = styled.ul`
     overflow: hidden;
   }
   @media (max-width: 641px) {
-    top: 135px;
+    top: 88px;
+  }
+  @media (max-width: 462px) {
+    top: 124px;
   }
 `;
 

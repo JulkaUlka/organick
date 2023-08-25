@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
   &:focus {
     background-color: ${btnColor};
   }
-  @media (max-width: 400px) {
+  @media (max-width: 466px) {
     padding: 11px;
   }
 `;

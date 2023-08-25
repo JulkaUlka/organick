@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { titleFont, titleColor, btnColor } from "../../App.styled";
+import { titleFont, titleColor, btnColor, whiteColor } from "../../App.styled";
 
 const Button = ({ backgroundColor, textColor, margins, ...props }) => (
   <button {...props}></button>
@@ -13,7 +13,7 @@ export const ButtonStyled = styled(Button)`
   border-radius: 5px;
   border: 2px solid transparent;
   background-color: ${(props) => props.backgroundColor || titleColor};
-  color: ${(props) => props.textColor || "#FFF"};
+  color: ${(props) => props.textColor || whiteColor};
   margin: ${(props) => props.margins || "none"};
   font-family: ${titleFont};
   font-size: 1.25rem;
@@ -34,9 +34,20 @@ export const ButtonArrowStyled = styled(ButtonStyled)`
   justify-content: center;
   gap: 5px;
   padding: 1.44vw;
- &:hover,
+  &:hover,
   &:focus {
     background-color: ${btnColor};
     color: ${titleColor};
+  }
+`;
+export const YellowButtonStyled = styled(ButtonArrowStyled)`
+position: relative;
+background-color: ${btnColor};
+color: ${titleColor};
+z-index:1;
+  &:hover,
+  &:focus {
+    background-color: ${titleColor};
+    color: ${whiteColor};
   }
 `;

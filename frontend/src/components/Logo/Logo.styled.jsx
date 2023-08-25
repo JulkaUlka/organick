@@ -28,7 +28,6 @@ export const LogoLink = styled.div`
     display: ${({ open }) => (open ? "none" : "flex")};
   }
   @media (max-width: 480px) {
-    padding-left: 20px;
     font-size: 28px;
     font-weight: 700;
     line-height: 36px;
