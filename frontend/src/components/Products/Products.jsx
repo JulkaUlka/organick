@@ -64,17 +64,21 @@ export function Products() {
         </ProductListStyled>
         {!showAll ? (
           <ButtonArrowStyled
-            type="buttton"
+            type="button"
             margins="80px auto"
             onClick={() => setShowAll(!showAll)}
+            rel="noopener
+        noreferrer"
           >
             Load More <Arrow />
           </ButtonArrowStyled>
         ) : (
           <ButtonArrowStyled
-            type="buttton"
+            type="button"
             margins="80px auto"
             onClick={() => setShowAll(!showAll)}
+            rel="noopener
+        noreferrer"
           >
             Hide All <Arrow />
           </ButtonArrowStyled>

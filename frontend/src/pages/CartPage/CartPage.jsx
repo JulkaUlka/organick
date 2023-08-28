@@ -75,7 +75,8 @@ function CartPage() {
         {isOrder ? (
           <OrderedForm />
         ) : (
-          <ButtonArrowStyled margins="0 auto" onClick={toOrderHandler}>
+          <ButtonArrowStyled margins="0 auto" onClick={toOrderHandler} rel="noopener
+          noreferrer">
             To order
             <Arrow />
           </ButtonArrowStyled>

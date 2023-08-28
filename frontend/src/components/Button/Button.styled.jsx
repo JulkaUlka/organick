@@ -28,16 +28,33 @@ export const ButtonStyled = styled(Button)`
     color: ${titleColor};
   }
 `;
-export const ButtonArrowStyled = styled(ButtonStyled)`
+export const ButtonArrowStyled = styled.a`
+width: 13.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 1.44vw;
+  padding: 1.44vw 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: ${(props) => props.backgroundColor || titleColor};
+  color: ${(props) => props.textColor || whiteColor};
+  margin: ${(props) => props.margins || "none"};
+  font-family: ${titleFont};
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     background-color: ${btnColor};
     color: ${titleColor};
+  }
+  @media (max-width: 873px) {
+    width: 10rem;
   }
 `;
 export const YellowButtonStyled = styled(ButtonArrowStyled)`

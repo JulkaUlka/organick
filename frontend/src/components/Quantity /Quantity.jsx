@@ -20,7 +20,8 @@ export const Quantity = ({
         value={inputValue}
         onChange={handleQuantityChange}
       ></QuantityInput>
-      <ButtonArrowStyled onClick={onAction}>
+      <ButtonArrowStyled onClick={onAction} rel="noopener
+        noreferrer">
         {text} {showArrow ? <Arrow /> : null}
       </ButtonArrowStyled>
     </BlockStyled>
