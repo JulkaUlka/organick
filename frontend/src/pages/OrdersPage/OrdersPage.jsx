@@ -1,9 +1,13 @@
 import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import { Container } from "../../App.styled";
-import { Block, Text, Title } from "../../components/ProductInfo/Productinfo.styled";
+import {
+  Block,
+  Text,
+  Title,
+} from "../../components/ProductInfo/Productinfo.styled";
 import { OrderList, OrderItem, PageTitle } from "./OrdersPage.styled";
-
+import { Loader } from "../../components/Loader/Loader";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -19,7 +23,7 @@ const reducer = (state, action) => {
 };
 
 function OrdersPage() {
-  const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
+  const [{ loading, orders }, dispatch] = useReducer(reducer, {
     orders: [],
     loading: true,
     error: "",
@@ -30,36 +34,41 @@ function OrdersPage() {
       try {
         const result = await axios.get("/api/orders");
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
-        console.log(result.data);
-      } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message });
+      } catch (error) {
+        dispatch({ type: "FETCH_FAIL", payload: error.message });
       }
     };
     getOrders();
   }, []);
   return (
     <>
-    <Container> 
-      <OrderList>
-       <PageTitle>Your orders:</PageTitle> 
-        {orders.map((order) => (
-          <OrderItem {...order} key={order._id}>
-            {order.orderItems.map((orderItem) => (
-              <Block wrapping="no-wrap" key={orderItem._id}>
-                <img src={orderItem.image} alt={orderItem.name} width="100" height="130"/>
-                <Text>{orderItem.name}</Text>
-                <Text>quantity: {orderItem.quantity}</Text>
+      {loading && <Loader />}
+      <Container>
+        <OrderList>
+          <PageTitle>Your orders:</PageTitle>
+          {orders.map((order) => (
+            <OrderItem {...order} key={order._id}>
+              {order.orderItems.map((orderItem) => (
+                <Block wrapping="no-wrap" key={orderItem._id}>
+                  <img
+                    src={orderItem.image}
+                    alt={orderItem.name}
+                    width="100"
+                    height="130"
+                  />
+                  <Text>{orderItem.name}</Text>
+                  <Text>quantity: {orderItem.quantity}</Text>
+                </Block>
+              ))}
+              <Block wrapping="no-wrap">
+                <Text aligning="start">{order.shippingAddress.fullName}</Text>
+                <Text aligning="start">{order.shippingAddress.address}</Text>
+                <Text aligning="start">{order.shippingAddress.phone}</Text>
+                <Title>{order.totalPrice}$</Title>
               </Block>
-            ))}
-            <Block wrapping="no-wrap">
-              <Text aligning="start">{order.shippingAddress.fullName}</Text>
-              <Text aligning="start">{order.shippingAddress.address}</Text>
-              <Text aligning="start">{order.shippingAddress.phone}</Text>
-              <Title>{order.totalPrice}$</Title>
-            </Block>
             </OrderItem>
-        ))}
-      </OrderList>
+          ))}
+        </OrderList>
       </Container>
     </>
   );

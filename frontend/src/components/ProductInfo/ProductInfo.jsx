@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-
+import React, { useState } from "react";
 import {
   Backdrop,
   Modal,
@@ -17,16 +16,17 @@ import { Container, titleColor } from "../../App.styled";
 import { ButtonStyled } from "../Button/Button.styled";
 import { Rating } from "../Raiting/Raiting";
 import { Quantity } from "../Quantity /Quantity";
-import { Store } from "../../helpers/store";
+import { useSelector } from "react-redux";
+import { selectCartProducts } from "../../redux/cart/selectors";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cart/cartSlice";
 
 export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
   const [activeButton, setActiveButton] = useState("description");
   const [productQuantity, setProductQuantity] = useState(1);
-
   const activityHandler = (buttonName) => {
     setActiveButton(buttonName);
   };
-
   const {
     name,
     category,
@@ -38,12 +38,10 @@ export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
     description,
     additionalInfo,
   } = selectedProduct || {};
-
   const activeText =
     activeButton === "description" ? description : additionalInfo;
-
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart } = state;
+  const cartItems = useSelector(selectCartProducts);
+  const dispatch = useDispatch();
 
   const handleQuantityChange = (event) => {
     const newQuantity = parseInt(event.target.value, 10);
@@ -51,20 +49,14 @@ export const ProductInfo = ({ onOpenModal, selectedProduct }) => {
   };
 
   const handleAddToCart = () => {
-    const existItem = cart.cartItems.find(
-      (x) => x.path === selectedProduct.path
-    );
-    const quantity = existItem
+    const existItem = cartItems.find((x) => x._id === selectedProduct._id);
+    let quantity = existItem
       ? existItem.quantity + productQuantity
       : productQuantity;
-
-    ctxDispatch({
-      type: "CART_ADD_ITEM",
-      payload: { ...selectedProduct, quantity },
-    });
-
+    dispatch(addToCart({ ...selectedProduct, quantity }));
     onOpenModal();
   };
+
   const closeModal = () => {
     onOpenModal();
   };

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useContext } from "react";
 import { Quantity } from "../../components/Quantity /Quantity";
 import { ButtonArrowStyled } from "../../components/Button/Button.styled";
 import { Arrow } from "../../components/Arrow/Arrow";
 import { OrderedForm } from "../../components/OrderedForm/OrderedForm";
 import { Container } from "../../App.styled";
-import { Store } from "../../helpers/store";
 import {
   Discount,
   Price,
@@ -13,28 +11,29 @@ import {
 } from "../../components/ProductList/ProductList.styled";
 import { Title } from "../../components/ProductInfo/Productinfo.styled";
 import { Cart, List, Item, ImageWrapper, Total } from "./CartPage.styled";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, deleteFromCart } from "../../redux/cart/cartSlice";
 
 function CartPage() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const {
-    cart: { cartItems },
-  } = state;
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const [isOrder, setIsOrder] = useState(false);
+
   const handleRemoveFromCart = (item) => {
-    ctxDispatch({ type: "CART_REMOVE_ITEM", payload: item });
+    dispatch(deleteFromCart({ path: item.path }));
   };
 
   const handleQuantityChange = (newQuantity, item) => {
-    ctxDispatch({
-      type: "CART_ADD_ITEM",
-      payload: { ...item, quantity: newQuantity },
-    });
+    dispatch(addToCart({ ...item, quantity: newQuantity }));
   };
-  const [isOrder, setIsOrder] = useState(false);
 
   const toOrderHandler = () => {
     setIsOrder(true);
   };
-
+const totalCost= cartItems.reduce(
+  (a, c) => a + (c.price - c.discount) * c.quantity,
+  0
+);
   return (
     <Cart>
       <Container>
@@ -52,7 +51,8 @@ function CartPage() {
               <Quantity
                 onAction={() => handleRemoveFromCart(item)}
                 inputValue={item.quantity}
-                text="X"
+                width="4rem"
+                text="x"
                 showArrow={false}
                 handleQuantityChange={(e) =>
                   handleQuantityChange(+e.target.value, item)
@@ -63,20 +63,21 @@ function CartPage() {
         </List>
         <Total>
           Total Cost{" "}
-          {cartItems.reduce(
-            (a, c) => a + (c.price - c.discount) * c.quantity,
-            0
-          )}
+          {totalCost}
           $
         </Total>
         <Total>
           Discount {cartItems.reduce((a, c) => a + c.discount * c.quantity, 0)}$
         </Total>
         {isOrder ? (
-          <OrderedForm />
+          <OrderedForm cart={cartItems} total={totalCost} />
         ) : (
-          <ButtonArrowStyled margins="0 auto" onClick={toOrderHandler} rel="noopener
-          noreferrer">
+          <ButtonArrowStyled
+            margins="0 auto"
+            onClick={toOrderHandler}
+            rel="noopener
+          noreferrer"
+          >
             To order
             <Arrow />
           </ButtonArrowStyled>

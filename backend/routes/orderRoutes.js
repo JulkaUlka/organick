@@ -9,9 +9,9 @@ orderRouter.post(
     console.log("Request body:", req.body);
     try {
       const newOrder = new Order({
-        orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
+        orderItems: req.body.orderItems.cart.map((x) => ({ ...x, product: x._id })),
         shippingAddress: req.body.shippingAddress,
-        totalPrice: req.body.totalPrice,
+        totalPrice: req.body.orderItems.total,
       });
       const order = await newOrder.save();
       res.status(201).send({ message: "New Order Created" });

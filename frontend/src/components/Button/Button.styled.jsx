@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 import { titleFont, titleColor, btnColor, whiteColor } from "../../App.styled";
 
@@ -28,8 +29,17 @@ export const ButtonStyled = styled(Button)`
     color: ${titleColor};
   }
 `;
-export const ButtonArrowStyled = styled.a`
-width: 13.75rem;
+const A = ({
+  backgroundColor,
+  textColor,
+  margins,
+  width,
+  children,
+  ...props
+}) => <a {...props}>{children}</a>;
+export const ButtonArrowStyled = styled(A)`
+  cursor: pointer;
+  width: ${(props) => props.width || "13.75rem"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,14 +64,14 @@ width: 13.75rem;
     color: ${titleColor};
   }
   @media (max-width: 873px) {
-    width: 10rem;
+    width: ${(props) => props.width || "10rem"};
   }
 `;
 export const YellowButtonStyled = styled(ButtonArrowStyled)`
-position: relative;
-background-color: ${btnColor};
-color: ${titleColor};
-z-index:1;
+  position: relative;
+  background-color: ${btnColor};
+  color: ${titleColor};
+  z-index: 1;
   &:hover,
   &:focus {
     background-color: ${titleColor};
