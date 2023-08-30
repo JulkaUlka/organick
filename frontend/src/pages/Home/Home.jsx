@@ -6,6 +6,7 @@ import { AboutUs } from "../../components/AboutUs/AboutUs";
 import { Testimonial } from "../../components/Testimonial/Testimonial";
 import { Offers } from "../../components/Offers/Offers";
 import { Footer } from "../../components/Footer/Footer";
+import { Story } from "../../components/Story/Story";
 
 
 
@@ -18,6 +19,7 @@ function Home() {
       <Products />
       <Testimonial/>
       <Offers/>
+      <Story/>
       <Footer/>
     </>
   );
