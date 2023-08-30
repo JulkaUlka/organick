@@ -26,23 +26,15 @@ export const Footer = () => {
           <ul>
             <li>
               <p>Email</p>
-              <a
-                className="footer__contact-link"
-                href="mailto:needhelp@Organia.com"
-              >
-                needhelp@Organia.com
-              </a>
+              <a href="mailto:needhelp@Organia.com">needhelp@Organia.com</a>
             </li>
             <li>
               <p>Phone</p>
-              <a className="footer__contact-link" href="tel:666888888">
-                666 888 888
-              </a>
+              <a href="tel:666888888">666 888 888</a>
             </li>
             <li>
               <p>Address</p>
               <a
-                className="footer__contact-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://goo.gl/maps/i8tyyEYE8oVn27HK8"
@@ -62,7 +54,6 @@ export const Footer = () => {
             <li>
               <Link
                 href="https://www.instagram.com/"
-                class="footer__media-link"
                 target="_blank"
                 rel="noopener
                   noreferrer"
@@ -73,7 +64,6 @@ export const Footer = () => {
             <li>
               <Link
                 href="https://www.facebook.com/"
-                class="footer__media-link"
                 target="_blank"
                 rel="noopener
                 noreferrer"
@@ -84,7 +74,6 @@ export const Footer = () => {
             <li>
               <Link
                 href="https://twitter.com/?lang=uk"
-                class="footer__media-link"
                 target="_blank"
                 rel="noopener
                 noreferrer"
@@ -95,7 +84,6 @@ export const Footer = () => {
             <li>
               <Link
                 href="https://www.pinterest.com/"
-                class="footer__media-link"
                 target="_blank"
                 rel="noopener
                   noreferrer"

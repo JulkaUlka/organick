@@ -32,7 +32,10 @@ export function News() {
             organic food, & more
           </Title>
         </div>
-        <Button>
+        <Button
+          rel="noopener
+        noreferrer"
+        >
           More News
           <Arrow />
         </Button>
@@ -53,7 +56,10 @@ export function News() {
               Simply dummy text of the printing and typesetting industry. Lorem
               Ipsum
             </Text>
-            <YellowButtonStyled>
+            <YellowButtonStyled
+              rel="noopener
+        noreferrer"
+            >
               Read More <Arrow />
             </YellowButtonStyled>
           </CardBody>
@@ -73,7 +79,10 @@ export function News() {
               Simply dummy text of the printing and typesetting industry. Lorem
               Ipsum
             </Text>
-            <YellowButtonStyled>
+            <YellowButtonStyled
+              rel="noopener
+        noreferrer"
+            >
               Read More <Arrow />
             </YellowButtonStyled>
           </CardBody>

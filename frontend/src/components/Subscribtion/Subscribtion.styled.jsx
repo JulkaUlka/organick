@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import form from "../../img/form.png";
-import { Container, accentColor, whiteColor } from "../../App.styled";
+import { Container, accentColor } from "../../App.styled";
 
 export const SubContainer = styled(Container)`
   background: url(${form}) center/cover;
@@ -13,9 +13,6 @@ export const SubContainer = styled(Container)`
   @media (max-width: 634px) {
     flex-wrap: wrap;
     gap: 10px;
-  }
-  & p {
-    color: ${whiteColor};
   }
   & form {
     display: flex;

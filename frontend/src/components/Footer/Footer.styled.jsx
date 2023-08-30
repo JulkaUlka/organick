@@ -174,4 +174,4 @@ export const Copyright = styled.div`
   border-top: 1px solid #d4d4d4;
   padding: 1vw 0;
   text-align: center;
-`;
+  `;

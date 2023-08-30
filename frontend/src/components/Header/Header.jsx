@@ -57,7 +57,7 @@ export const Header = () => {
             </NavigateList>
           </nav>
           <SearchInput />
-          <Cart />
+          <Cart onCloseMenu={() => setOpen(false)} />
         </HeaderContainer>
       </header>
       <Outlet />

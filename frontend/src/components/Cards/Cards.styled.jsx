@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { titleColor, whiteColor, bgColorSecondary } from "../../App.styled";
 
-export const CardsContainer = styled.section`
+export const CardsContainer = styled.div`
   padding: 9.7vw 0;
   display: flex;
   flex-direction: row;

@@ -35,7 +35,9 @@ const A = ({
   width,
   children,
   ...props
-}) => <a {...props}>{children}</a>;
+}) => <a href=" " rel="noopener
+noreferrer" {...props}>{children}</a>;
+
 export const ButtonArrowStyled = styled(A)`
   cursor: pointer;
   width: ${(props) => props.width || "13.75rem"};

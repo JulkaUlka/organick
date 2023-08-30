@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import { Quantity } from "../../components/Quantity /Quantity";
 import { ButtonArrowStyled } from "../../components/Button/Button.styled";
 import { Arrow } from "../../components/Arrow/Arrow";
@@ -20,9 +21,16 @@ import { Footer } from "../../components/Footer/Footer";
 
 function CartPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.items);
   const [isOrder, setIsOrder] = useState(false);
 
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate('/');
+    }
+  }, [cartItems, navigate]);
+  
   const handleRemoveFromCart = (item) => {
     dispatch(deleteFromCart({ path: item.path }));
   };
@@ -42,7 +50,7 @@ function CartPage() {
     <section>
       <Banner img={cart}>
         {" "}
-        <TitleStyled>Thank you for your order</TitleStyled>
+        <TitleStyled>Cart</TitleStyled>
       </Banner>
       <Cart>
         <Container>

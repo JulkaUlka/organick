@@ -30,11 +30,10 @@ export function Products() {
   });
 
   return (
-    <>
+    <section>
       <ProductContainer>
         <SubTitle>Categories</SubTitle>
         <Title>Our Products:</Title>
-
         {isLoadind && <Loader />}
         <ProductListStyled>
           {sortedProducts.slice(0, itemsToShow).map((product) => (
@@ -43,7 +42,6 @@ export function Products() {
         </ProductListStyled>
         {!showAll ? (
           <ButtonArrowStyled
-            type="button"
             margins="80px auto"
             onClick={() => setShowAll(!showAll)}
             rel="noopener
@@ -53,7 +51,6 @@ export function Products() {
           </ButtonArrowStyled>
         ) : (
           <ButtonArrowStyled
-            type="button"
             margins="80px auto"
             onClick={() => setShowAll(!showAll)}
             rel="noopener
@@ -63,6 +60,6 @@ export function Products() {
           </ButtonArrowStyled>
         )}
       </ProductContainer>
-    </>
+    </section>
   );
 }

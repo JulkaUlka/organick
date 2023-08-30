@@ -11,6 +11,7 @@ export const Slider = () => {
       <SplideStyled
         options={{
           perPage: 1,
+          role:"region",
           arrows: false,
           pagination: true,
           drag: "free",

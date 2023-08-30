@@ -15,11 +15,11 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<LazyHome />} />
-            <Route exact path='/cart' element={<CartPage />} />
-            <Route exact path='/success' element={<SuccessPage />} />
-            <Route exact path='/*' element={<ErrorPage />} />
+            <Route exact path="/cart" element={<CartPage />} />
+            <Route exact path="/success" element={<SuccessPage />} />
+            <Route exact path="/*" element={<ErrorPage />} />
           </Route>
-          <Route path="/admin" element={<OrdersPage />}/>
+          <Route path="/admin" element={<OrdersPage />} />
         </Routes>
       </Suspense>
     </div>
