@@ -30,8 +30,8 @@ export const FooterContainer = styled(Container)`
     font-weight: 700;
     color: ${titleColor};
     @media (max-width: 660px) {
-        font-size: 18px;
-      }
+      font-size: 18px;
+    }
   }
 `;
 export const ContactBlock = styled.div`
@@ -123,7 +123,7 @@ export const Link = styled.a`
   }
   @media (max-width: 660px) {
     width: 30px;
-  height: 30px;
+    height: 30px;
   }
 `;
 export const Icon = styled(FontAwesomeIcon)`
@@ -132,7 +132,7 @@ export const Icon = styled(FontAwesomeIcon)`
   height: 1.25rem;
   @media (max-width: 660px) {
     width: 15px;
-  height: 15px;
+    height: 15px;
   }
 `;
 export const PagesBlock = styled.div`
@@ -152,6 +152,13 @@ export const PagesBlock = styled.div`
     justify-content: center;
     align-items: flex-start;
     gap: 2vw;
+
+    @media (max-width: 1120px) {
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+  & li {
     font-family: ${mainFont};
     font-size: 1.125rem;
     font-weight: 400;
@@ -160,10 +167,6 @@ export const PagesBlock = styled.div`
     &:hover,
     &:focus {
       color: ${accentColor};
-    }
-    @media (max-width: 1120px) {
-      align-items: flex-start;
-      gap: 20px;
     }
   }
 `;

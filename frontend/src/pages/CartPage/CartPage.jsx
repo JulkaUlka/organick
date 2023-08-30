@@ -13,6 +13,10 @@ import { Title } from "../../components/ProductInfo/Productinfo.styled";
 import { Cart, List, Item, ImageWrapper, Total } from "./CartPage.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, deleteFromCart } from "../../redux/cart/cartSlice";
+import { Banner } from "../../components/Banner/Banner";
+import cart from "../../img/cart.png";
+import { TitleStyled } from "../SuccessPage/SuccessPage.styled";
+import { Footer } from "../../components/Footer/Footer";
 
 function CartPage() {
   const dispatch = useDispatch();
@@ -30,60 +34,64 @@ function CartPage() {
   const toOrderHandler = () => {
     setIsOrder(true);
   };
-const totalCost= cartItems.reduce(
-  (a, c) => a + (c.price - c.discount) * c.quantity,
-  0
-);
+  const totalCost = cartItems.reduce(
+    (a, c) => a + (c.price - c.discount) * c.quantity,
+    0
+  );
   return (
-    <Cart>
-      <Container>
-        <List>
-          {cartItems.map((item) => (
-            <Item key={item._id}>
-              <ImageWrapper>
-                <ProductImg src={item.image} alt={item.name} />
-              </ImageWrapper>
-              <Title>{item.name}</Title>
-              <div>
-                {item.discount ? <Discount>${item.price}</Discount> : null}
-                <Price>${item.price - item.discount}</Price>
-              </div>
-              <Quantity
-                onAction={() => handleRemoveFromCart(item)}
-                inputValue={item.quantity}
-                width="4rem"
-                text="x"
-                showArrow={false}
-                handleQuantityChange={(e) =>
-                  handleQuantityChange(+e.target.value, item)
-                }
-              />
-            </Item>
-          ))}
-        </List>
-        <Total>
-          Total Cost{" "}
-          {totalCost}
-          $
-        </Total>
-        <Total>
-          Discount {cartItems.reduce((a, c) => a + c.discount * c.quantity, 0)}$
-        </Total>
-        {isOrder ? (
-          <OrderedForm cart={cartItems} total={totalCost} />
-        ) : (
-          <ButtonArrowStyled
-            margins="0 auto"
-            onClick={toOrderHandler}
-            rel="noopener
+    <section>
+      <Banner img={cart}>
+        {" "}
+        <TitleStyled>Thank you for your order</TitleStyled>
+      </Banner>
+      <Cart>
+        <Container>
+          <List>
+            {cartItems.map((item) => (
+              <Item key={item._id}>
+                <ImageWrapper>
+                  <ProductImg src={item.image} alt={item.name} />
+                </ImageWrapper>
+                <Title>{item.name}</Title>
+                <div>
+                  {item.discount ? <Discount>${item.price}</Discount> : null}
+                  <Price>${item.price - item.discount}</Price>
+                </div>
+                <Quantity
+                  onAction={() => handleRemoveFromCart(item)}
+                  inputValue={item.quantity}
+                  width="4rem"
+                  text="x"
+                  showArrow={false}
+                  handleQuantityChange={(e) =>
+                    handleQuantityChange(+e.target.value, item)
+                  }
+                />
+              </Item>
+            ))}
+          </List>
+          <Total>Total Cost {totalCost}$</Total>
+          <Total>
+            Discount{" "}
+            {cartItems.reduce((a, c) => a + c.discount * c.quantity, 0)}$
+          </Total>
+          {isOrder ? (
+            <OrderedForm cart={cartItems} total={totalCost} />
+          ) : (
+            <ButtonArrowStyled
+              margins="0 auto"
+              onClick={toOrderHandler}
+              rel="noopener
           noreferrer"
-          >
-            To order
-            <Arrow />
-          </ButtonArrowStyled>
-        )}
-      </Container>
-    </Cart>
+            >
+              To order
+              <Arrow />
+            </ButtonArrowStyled>
+          )}
+        </Container>
+      </Cart>
+      <Footer />
+    </section>
   );
 }
 

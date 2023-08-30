@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { titleFont, titleColor, btnColor, whiteColor } from "../../App.styled";
 
@@ -65,6 +64,7 @@ export const ButtonArrowStyled = styled(A)`
   }
   @media (max-width: 873px) {
     width: ${(props) => props.width || "10rem"};
+    font-size: 12px;
   }
 `;
 export const YellowButtonStyled = styled(ButtonArrowStyled)`

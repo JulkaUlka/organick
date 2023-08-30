@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Title } from "../../components/ProductInfo/Productinfo.styled";
 
-export const Cart = styled.section`
+export const Cart = styled.div`
   background-color: rgba(253, 176, 45, 0.16);
+  padding: 5.44vw 0;
+   
 `;
 export const List = styled.ul`
   display: flex;
@@ -18,7 +20,7 @@ export const Item = styled.li`
 export const ImageWrapper = styled.div`
   background-color: rgb(195 170 126 / 9%);
   border-radius: 16px;
-  width: 292px;
+  width: 18.25vw;
   height: auto;
 `;
 export const Total = styled(Title)`

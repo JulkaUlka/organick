@@ -4,7 +4,7 @@ import { Header } from "./components/Header/Header";
 import CartPage from "./pages/CartPage/CartPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
-
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
 
@@ -17,6 +17,7 @@ export const App = () => {
             <Route index element={<LazyHome />} />
             <Route exact path='/cart' element={<CartPage />} />
             <Route exact path='/success' element={<SuccessPage />} />
+            <Route exact path='/*' element={<ErrorPage />} />
           </Route>
           <Route path="/admin" element={<OrdersPage />}/>
         </Routes>
