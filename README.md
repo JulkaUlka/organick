@@ -5,10 +5,10 @@ Organick serves as an online platform presenting a variety of organic items, all
 
 ## Technologies:
 
-- MongoDB;
-- Express.js;
-- React;
-- Node.js;
+- #### MongoDB;
+- #### Express.js;
+- #### React;
+- #### Node.js;
 
 ## Libraries:
 
@@ -37,7 +37,8 @@ Features:
 
 
 ## Getting started:
-1.Ensure that you have access to the Database URL provided exclusively for Sigma employees in the .env file. 
+
+1. __Ensure that you have access to the Database URL provided exclusively for Sigma employees in the .env file.__
 
 2. Clone the repository:
 
@@ -57,6 +58,7 @@ Features:
 
 6. Navigate to the frontend directory:
 
+```cd ..``` 
 ```cd frontend```
 
 7. Install project dependencies:
