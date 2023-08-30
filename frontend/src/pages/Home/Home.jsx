@@ -7,8 +7,9 @@ import { Testimonial } from "../../components/Testimonial/Testimonial";
 import { Offers } from "../../components/Offers/Offers";
 import { Footer } from "../../components/Footer/Footer";
 import { Story } from "../../components/Story/Story";
-
-
+import { Cards } from "../../components/Cards/Cards";
+import { Subscribtion } from "../../components/Subscribtion/Subscribtion";
+import { News } from "../../components/News/News";
 
 function Home() {
   return (
@@ -17,10 +18,13 @@ function Home() {
       <Promo />
       <AboutUs />
       <Products />
-      <Testimonial/>
-      <Offers/>
-      <Story/>
-      <Footer/>
+      <Testimonial />
+      <Offers />
+      <Story />
+      <Cards />
+      <News />
+      <Subscribtion />
+      <Footer />
     </>
   );
 }

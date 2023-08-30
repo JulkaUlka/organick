@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const Div = ({ backgroundImg,  ...props }) => <div {...props}></div>;
+const Div = ({ backgroundImg,width,  ...props }) => <div {...props}></div>;
 
 export const BannerStyled = styled(Div)`
   height: 28vw;
-  width: 100%;
+  width: ${(props) => props.width || "100%"};
   background-image: url(${(props) => props.backgroundImg});
   background-repeat: no-repeat;
   background-size: cover;
