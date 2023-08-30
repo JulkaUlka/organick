@@ -5,7 +5,7 @@ import { Products } from "../../components/Products/Products";
 import { AboutUs } from "../../components/AboutUs/AboutUs";
 import { Testimonial } from "../../components/Testimonial/Testimonial";
 import { Offers } from "../../components/Offers/Offers";
-
+import { Footer } from "../../components/Footer/Footer";
 
 
 
@@ -18,6 +18,7 @@ function Home() {
       <Products />
       <Testimonial/>
       <Offers/>
+      <Footer/>
     </>
   );
 }
