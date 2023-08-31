@@ -96,14 +96,13 @@ export const OrderedForm = (cart, total) => {
 
         dispatch(deleteAllCart());
 
-setTimeout(() => {
-  navigate("/success");
-}, 0);
+        setTimeout(() => {
+          navigate("/success");
+        }, 0);
       } catch (err) {
         console.log(err);
       } finally {
         setIsSubmitting(false);
-        
       }
     } else {
       setFormErrors(errors);
