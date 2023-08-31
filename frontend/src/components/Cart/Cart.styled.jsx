@@ -25,7 +25,7 @@ export const Quntity = styled.p`
   color: ${titleColor};
   @media (max-width: 1020px) {
     font-size: 16px;
-  @media (max-width: 400px) {
+  @media (max-width: 660px) {
     font-size: 12px;
   }
  
@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
   &:focus {
     background-color: ${btnColor};
   }
-  @media (max-width: 466px) {
+  @media (max-width: 660px) {
     padding: 11px;
   }
 `;

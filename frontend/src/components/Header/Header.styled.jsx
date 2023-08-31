@@ -9,16 +9,13 @@ import {
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-content: space-between;
   align-items: center;
   padding-top: 4.3125vw;
   padding-bottom: 4.3125vw;
   gap: 10px;
-  @media (min-width: 1021px) {
-    flex-wrap: nowrap;
-  }
-`;
+  `;
 
 export const BurgerMenu = styled.div`
   @media (max-width: 1020px) {
@@ -84,12 +81,12 @@ export const NavigateList = styled.ul`
     overflow: hidden;
   }
   @media (max-width: 641px) {
-    top: 88px;
+    top: 79px;
   }
-  @media (max-width: 462px) {
-    top: 124px;
+  @media (max-width: 380px) {
+    top: 75px;
   }
-`;
+ `;
 
 export const NavItem = styled.li`
   font-family: ${titleFont};

@@ -19,7 +19,7 @@ export const SubContainer = styled(Container)`
     align-items: center;
     justify-content: center;
     gap: 5px;
-    @media (max-width: 416px) {
+    @media (max-width: 450px) {
       flex-direction: column;
       align-items: flex-start;
     }

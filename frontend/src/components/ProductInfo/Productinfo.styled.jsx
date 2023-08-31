@@ -63,11 +63,12 @@ export const ImageWrap = styled.div`
   background: ${bgColor};
   border-radius: 1.875rem;
   position: relative;
+  overflow: hidden;
 `;
 export const Image = styled.img`
   margin-top: 40px;
   mix-blend-mode: multiply;
-`;
+ `;
 export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;

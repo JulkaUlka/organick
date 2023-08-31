@@ -14,6 +14,9 @@ export const Wrapper = styled.div`
   flex: 1 0 auto;
   max-width: 16.5vw;
   min-width: 130px;
+  @media (max-width: 1020px) {
+    display:none;
+  }
  
 `;
 export const SearchBtn = styled.button`
@@ -29,9 +32,9 @@ export const SearchBtn = styled.button`
   &:focus {
     background-color: ${btnColor};
   }
-  @media (max-width: 400px) {
-    padding: 13px;
-  }
+  // @media (max-width: 400px) {
+  //   padding: 13px;
+  // }
 `;
 export const SearchIcon = styled(FontAwesomeIcon)`
   color: ${whiteColor};
@@ -47,8 +50,8 @@ export const Input = styled.input`
   outline: none;
   border: none;
 
-  @media (max-width: 400px) {
-    font-size: 12px;
-    line-height: normal;
-  }
+  // @media (max-width: 400px) {
+  //   font-size: 12px;
+  //   line-height: normal;
+  // }
 `;
