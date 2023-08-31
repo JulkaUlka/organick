@@ -1,25 +1,26 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Header } from "./components/Header/Header";
-import CartPage from "./pages/CartPage/CartPage";
-import SuccessPage from "./pages/SuccessPage/SuccessPage";
-import OrdersPage from "./pages/OrdersPage/OrdersPage";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import { Loader } from "./components/Loader/Loader";
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
+const LazyCartPage = lazy(() => import("./pages/CartPage/CartPage"));
+const LazySuccessPage = lazy(() => import("./pages/SuccessPage/SuccessPage"));
+const LazyErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
+const LazyOrdersPage = lazy(() => import("./pages/OrdersPage/OrdersPage"));
 
 export const App = () => {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<LazyHome />} />
-            <Route exact path="/cart" element={<CartPage />} />
-            <Route exact path="/success" element={<SuccessPage />} />
-            <Route exact path="/*" element={<ErrorPage />} />
+            <Route exact path="/cart" element={<LazyCartPage />} />
+            <Route exact path="/success" element={<LazySuccessPage />} />
+            <Route exact path="/*" element={<LazyErrorPage />} />
           </Route>
-          <Route path="/admin" element={<OrdersPage />} />
+          <Route path="/admin" element={<LazyOrdersPage />} />
         </Routes>
       </Suspense>
     </div>

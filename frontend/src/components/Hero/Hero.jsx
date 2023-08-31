@@ -10,8 +10,12 @@ export const Hero = () => {
       <Container>
         <Subtitle>100% Natural Food</Subtitle>
         <MainTitle>Choose the best healthier way of life</MainTitle>
-        <YellowButtonStyled backgroundColor="btnColor" rel="noopener
-        noreferrer">
+        <YellowButtonStyled
+          backgroundColor="btnColor"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           Explore Now <Arrow />
         </YellowButtonStyled>
       </Container>

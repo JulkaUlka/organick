@@ -33,8 +33,9 @@ export function News() {
           </Title>
         </div>
         <Button
-          rel="noopener
-        noreferrer"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
         >
           More News
           <Arrow />
@@ -57,8 +58,9 @@ export function News() {
               Ipsum
             </Text>
             <YellowButtonStyled
-              rel="noopener
-        noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
             >
               Read More <Arrow />
             </YellowButtonStyled>
@@ -80,8 +82,9 @@ export function News() {
               Ipsum
             </Text>
             <YellowButtonStyled
-              rel="noopener
-        noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
             >
               Read More <Arrow />
             </YellowButtonStyled>

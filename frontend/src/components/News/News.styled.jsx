@@ -7,6 +7,7 @@ import {
   titleColor,
   titleFont,
   whiteColor,
+  accentColor,
 } from "../../App.styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -38,6 +39,7 @@ const Div = ({ backgroundImg, ...props }) => <div {...props}></div>;
 export const Card = styled(Div)`
   width: 46%;
   background-image: url(${(props) => props.backgroundImg});
+  background-color: ${accentColor};
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

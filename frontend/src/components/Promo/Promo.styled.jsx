@@ -2,7 +2,7 @@ import styled from "styled-components";
 import promo1 from "../../img/promo1.png";
 import promo2 from "../../img/promo2.png";
 
-import { Container } from "../../App.styled";
+import { Container,btnColor } from "../../App.styled";
 
 export const PromoContainer = styled(Container)`
   padding: 9.7vw 0;
@@ -25,11 +25,14 @@ export const Card = styled.div`
   align-items: start;
   justify-content: center;
   padding-left: 3.43rem;
+ 
   &:first-child {
     background: url(${promo1}) center/cover;
+    background-color: ${btnColor};
   }
   &:last-child {
     background: url(${promo2}) center/cover;
+    background-color: ${btnColor};
   }
   @media (max-width: 768px) {
     width: 300px;

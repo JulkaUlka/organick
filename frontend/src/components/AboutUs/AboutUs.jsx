@@ -45,8 +45,9 @@ export const AboutUs = () => {
             </Wrapper>
           </ParagraphBlock>
           <ButtonArrowStyled
-            rel="noopener
-        noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
           >
             Shop Now <Arrow />
           </ButtonArrowStyled>

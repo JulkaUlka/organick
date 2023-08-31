@@ -13,8 +13,10 @@ import { Cart } from "../Cart/Cart";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const isMobile = window.innerWidth <= 1020;
+
   useEffect(() => {
-    if (open) {
+    if (isMobile && open) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
@@ -23,7 +25,7 @@ export const Header = () => {
     return () => {
       document.body.classList.remove("no-scroll");
     };
-  }, [open]);
+  }, [isMobile, open]);
   return (
     <>
       <header>
@@ -43,7 +45,7 @@ export const Header = () => {
                 <NavLink to="about">About</NavLink>
               </NavItem>
               <NavItem open={open} onClick={() => setOpen(!open)}>
-                <NavLink to="shop">Pages</NavLink>
+                <NavLink to="pages">Pages</NavLink>
               </NavItem>
               <NavItem open={open} onClick={() => setOpen(!open)}>
                 <NavLink to="shop">Shop</NavLink>

@@ -43,18 +43,20 @@ export function Products() {
         {!showAll ? (
           <ButtonArrowStyled
             margins="80px auto"
-            onClick={() => setShowAll(!showAll)}
-            rel="noopener
-        noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              setShowAll(!showAll);
+            }}
           >
             Load More <Arrow />
           </ButtonArrowStyled>
         ) : (
           <ButtonArrowStyled
             margins="80px auto"
-            onClick={() => setShowAll(!showAll)}
-            rel="noopener
-        noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              setShowAll(!showAll);
+            }}
           >
             Hide All <Arrow />
           </ButtonArrowStyled>

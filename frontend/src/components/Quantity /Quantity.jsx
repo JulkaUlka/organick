@@ -9,6 +9,7 @@ export const Quantity = ({
   inputValue,
   handleQuantityChange,
   width,
+  event,
 }) => {
   return (
     <BlockStyled>
@@ -23,9 +24,10 @@ export const Quantity = ({
       ></QuantityInput>
       <ButtonArrowStyled
         width={width}
-        onClick={onAction}
-        rel="noopener
-        noreferrer"
+        onClick={(event) => {
+          event.preventDefault();
+          onAction();
+        }}
       >
         {text} {showArrow ? <Arrow /> : null}
       </ButtonArrowStyled>

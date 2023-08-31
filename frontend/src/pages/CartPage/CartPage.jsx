@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Quantity } from "../../components/Quantity /Quantity";
 import { ButtonArrowStyled } from "../../components/Button/Button.styled";
@@ -27,10 +27,10 @@ function CartPage() {
 
   useEffect(() => {
     if (cartItems.length === 0) {
-      navigate('/');
+      navigate("/");
     }
   }, [cartItems, navigate]);
-  
+
   const handleRemoveFromCart = (item) => {
     dispatch(deleteFromCart({ path: item.path }));
   };
@@ -88,9 +88,10 @@ function CartPage() {
           ) : (
             <ButtonArrowStyled
               margins="0 auto"
-              onClick={toOrderHandler}
-              rel="noopener
-          noreferrer"
+              onClick={(event) => {
+                event.preventDefault();
+                toOrderHandler();
+              }}
             >
               To order
               <Arrow />
