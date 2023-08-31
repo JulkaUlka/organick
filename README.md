@@ -39,7 +39,7 @@ Features:
 
 ## Getting started:
 
-1. __Ensure that you have access to the Database URL provided exclusively for Sigma employees in the .env file. Add that file to backend directory after cloning the repository. __
+1. __Ensure that you have access to the Database URL provided exclusively for Sigma employees in the .env file. Add that file to backend directory after cloning the repository.__
 
 2. Clone the repository:
 
