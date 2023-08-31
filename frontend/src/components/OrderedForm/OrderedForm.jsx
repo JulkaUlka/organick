@@ -8,7 +8,7 @@ import {
   Error,
   Wrapper,
 } from "./OrderedForm.styled";
-import { ButtonArrowStyled } from "../Button/Button.styled";
+import { ButtonStyled } from "../Button/Button.styled";
 import Axios from "axios";
 import { useDispatch } from "react-redux";
 import { deleteAllCart, saveShippingAddress } from "../../redux/cart/cartSlice";
@@ -93,12 +93,17 @@ export const OrderedForm = (cart, total) => {
           totalPrice: total,
         });
         console.log(data);
+
         dispatch(deleteAllCart());
-        navigate("/success");
+
+setTimeout(() => {
+  navigate("/success");
+}, 0);
       } catch (err) {
         console.log(err);
       } finally {
         setIsSubmitting(false);
+        
       }
     } else {
       setFormErrors(errors);
@@ -169,13 +174,13 @@ export const OrderedForm = (cart, total) => {
           {formErrors.message && <Error>{formErrors.message}</Error>}
         </Label>
       </Wrapper>
-      <ButtonArrowStyled
-        type="submit"
+      <ButtonStyled
+        type="button"
         onClick={(e) => onSubmitHandler(e)}
         disabled={isSubmitting}
       >
         Confirm
-      </ButtonArrowStyled>
+      </ButtonStyled>
     </Form>
   );
 };
