@@ -2,8 +2,6 @@
 
 Organick serves as an online platform presenting a variety of organic items, allowing visitors to explore and buy these products with ease. The website boasts a contemporary and user-centric layout that underscores the significance of embracing a lifestyle centered around natural and organic choices.
 
-**[Organick](http://18.197.177.66/) - Link to life page.**
-
 ## Technologies:
 
 - #### MongoDB;
